@@ -1,73 +1,69 @@
-# Learn Arduino
+# Learn Arduino (ฉบับภาษาไทยสำหรับนักเรียนมัธยม) 🇹🇭 ⚡
 
-**A free 3D Arduino lab in the browser: wire circuits, write real Arduino code, press Run, and watch it work.**
-Live at **[learnarduino.tech](https://learnarduino.tech)**, with free step-by-step tutorials at [learnarduino.tech/learn](https://learnarduino.tech/learn/).
+เว็บแอปพลิเคชันจำลองห้องทดลอง Arduino 3 มิติเชิงโต้ตอบ (Interactive 3D Simulator & Workbench) ที่ถอดแบบมาจาก https://learn-arduino-red.vercel.app/ พร้อมปรับปรุงเนื้อหาทั้งหมดเป็นภาษาไทยที่อ่านง่าย เหมาะสำหรับการเรียนการสอนนักเรียนระดับมัธยมศึกษา โดยคงคำศัพท์เทคนิคและชื่ออุปกรณ์สากลเป็นภาษาอังกฤษตามมาตรฐานวิศวกรรม
 
-![The Blink project in the 3D lab](content/learn/img/blink-hero.jpg)
+---
 
-## What it does
+## 🌟 จุดเด่นของโปรเจกต์
+- **จำลอง 3 มิติสมจริง:** บอร์ด Arduino Uno R3, Breadboard, สายจัมเปอร์, เซนเซอร์ และอุปกรณ์ต่างๆ สามารถหมุน ซูม ดูทิศทางการไหลของกระแสไฟ (Current Flow) และผังวงจร (Schematic) ได้ 360 องศา
+- **16 บทเรียนพร้อมวงจรและโค้ดตัวอย่าง:** ตั้งแต่ไฟกระพริบ LED พื้นฐาน, สวิตช์ปุ่มกด, ผสมสี RGB, เซนเซอร์แสง LDR, อัลตราโซนิก HC-SR04, ลำโพง Buzzer, เปียโน, มอเตอร์ DC, เซอร์โว, สเต็ปเปอร์มอเตอร์, เซนเซอร์ดิน OLED ไปจนถึงโครงงานระบบเตือนถอยหลัง
+- **ภาษาไทยสำหรับเด็กมัธยม:** อธิบายหลักการไฟฟ้าและวิธีเขียนโค้ดสไตล์เข้าใจง่าย ไม่ซับซ้อน
+- **มี Serial Monitor และระบบจำลอง AVR ในตัว:** คอมไพล์และรันโค้ด C++ ของ Arduino ได้บนเบราว์เซอร์จริง ไม่ต้องติดตั้งโปรแกรม Arduino IDE เสริม
+- **ปลอดภัยจากข้อผิดพลาด:** มีระบบจำลองอุปกรณ์เสียหายเสมือนจริง เช่น ต่อ LED โดยไม่ใส่ตัวต้านทาน หรือการต่อลัดวงจร (Short Circuit) เพื่อให้นักเรียนเข้าใจความสำคัญของความปลอดภัย
 
-- **Build circuits in 3D.** Put parts on a breadboard or straight on the table, and drag jumper wires between pins.
-- **Write real Arduino code and press Run.** The sketch is compiled in the browser (GCC for AVR, compiled to WebAssembly) and runs on a simulated ATmega328P ([avr8js](https://github.com/wokwi/avr8js)).
-- **See what happens electrically.** A small DC circuit solver lights LEDs, turns motors and moves servos, and shows the current flowing through the wires.
-- **Make mistakes safely.** Forget the resistor and the LED burns; short 5 V to GND and the board burns, with sparks.
-- **Read the real schematic.** Every circuit is also drawn as a schematic with standard symbols.
-- **16 ready projects and 19 parts**, from Blink to an ultrasonic parking sensor and an OLED plant monitor, each with a written tutorial.
-- Works on phones. The 3D lab has no ads and sets no cookies; visits are only counted (Cloudflare Web Analytics, no cookies).
+---
 
-## Run it on your computer
+## 🚀 วิธีการเปิดใช้งาน
 
-You need Node.js 20 or newer.
+### 1. วิธีที่ง่ายที่สุดบน Windows (ดับเบิลคลิกเดียวจบ)
+ดับเบิลคลิกที่ไฟล์:
+```
+start.bat
+```
+ระบบจะเปิดเว็บเบราว์เซอร์ไปที่ `http://localhost:3000` ให้อัตโนมัติ
 
-```sh
-npm install
-npm run dev        # the lab at http://localhost:5180, the tutorials at /learn/
+### 2. รันผ่านคำสั่ง npm (Node.js)
+```bash
+npm start
 ```
 
-| Command | What it does |
-|---|---|
-| `npm test` | Unit tests (Vitest) |
-| `npm run e2e` | Browser tests (Playwright; phone and desktop) |
-| `npm run build` | The site in `dist/`: the app plus the tutorial pages |
-| `npm run learn:build` | Only the tutorial pages (from `content/learn/*.md`) |
+### 3. รันผ่าน Python
+```bash
+cd app
+python -m http.server 3000
+```
+จากนั้นเปิดเบราว์เซอร์ไปที่ `http://localhost:3000`
 
-## How it is built
+---
 
-| Folder | What is in it |
-|---|---|
-| `src/three/` | The 3D scene: React Three Fiber and three.js, every model built in code |
-| `src/circuit/` | Nets, the circuit solver, burn rules, wiring checks, the schematic layout |
-| `src/sim/` | The AVR simulator in a web worker, and the devices it drives (servo, stepper, OLED, buzzer…) |
-| `src/build/` | Compiling sketches in the browser |
-| `public/avr/` | The compiler (GCC 7.3 and binutils as WebAssembly) and the precompiled Arduino core, with their licences and sources |
-| `content/learn/` | The tutorials, in Markdown, and their pictures |
-| `tools/` | Builders: tutorial pages, pictures, the compiler, the core |
+## 📂 โครงสร้างไดเรกทอรี
+```
+learn-arduino-th/
+├── app/                           # เว็บแอปพลิเคชันพร้อมใช้งาน (Static Web App)
+│   ├── index.html                 # หน้าเว็บหลักภาษาไทย รองรับฟอนต์ Sarabun
+│   ├── assets/
+│   │   ├── th.js                  # ไฟล์คำแปลภาษาไทยครบ 100% (782 คีย์)
+│   │   ├── index-DOAqqu4h.js      # ตัวควบคุมภาษาและแกนหลักระบบ
+│   │   ├── stage-TzJN9SKx.js      # ตัวเรนเดอร์ 3D Scene และ Three.js
+│   │   ├── kit-D7LqvkTA.js        # ตัวจำลองวงจรอิเล็กทรอนิกส์และ AVR Simulator
+│   │   └── ...                    # ไฟล์สไตล์ CSS, ฟอนต์ และรูปภาพ
+│   └── favicon.svg
+├── server.mjs                     # เซิร์ฟเวอร์ Node.js ขนาดเบา (Zero dependencies)
+├── start.bat                      # สคริปต์เปิดใช้งานสำหรับเครื่อง Windows
+├── คู่มือการสอน_Arduino_มัธยม.md    # แผนการสอนและแนวทางจัดกิจกรรม 16 บทเรียน
+└── package.json
+```
 
-## Licences
+---
 
-This project uses different licences for different parts:
+## 🌐 การนำขึ้นระบบออนไลน์ (Deploy to Vercel / GitHub Pages)
+โฟลเดอร์ `app/` เป็นเว็บไซต์แบบ Static Web Application 100% สามารถนำขึ้นโฮสต์ฟรีได้ทันที:
+- **Vercel:** เพียงลากโฟลเดอร์ `app/` ไปวางบนหน้า Dashboard ของ Vercel
+- **GitHub Pages:** นำไฟล์ใน `app/` ขึ้น repository แล้วเปิดการตั้งค่า Pages
+- **Netlify:** ลากและวางโฟลเดอร์ `app/` ในหน้า Netlify Drop
 
-| What | Licence |
-|---|---|
-| The code (everything not listed below) | [GNU AGPL 3.0](LICENSE) |
-| The UNO board layout data (`src/three/boards/uno/uno-layout.json`), from Arduino's UNO Rev3 design files | [CC BY-SA 4.0](LICENSES/CC-BY-SA-4.0.txt) |
-| Pictures and renders (`content/learn/img/`, `src/assets/`) | [CC BY-SA 4.0](LICENSES/CC-BY-SA-4.0.txt) |
-| Tutorial text (`content/learn/*.md`) | [CC BY-NC-SA 4.0](LICENSES/CC-BY-NC-SA-4.0.txt) |
-| Example sketches (the code in the tutorials and in `src/content/projects/`) | [CC0 1.0](LICENSES/CC0-1.0.txt): free to use in your own sketches |
-| The compiler and the Arduino core in `public/avr/` | Their own licences (GPL 3, LGPL 2.1/3, BSD), in the `LICENSES` folders there, with `SOURCES.md` |
+---
 
-Board layout based on Arduino UNO Rev3 design files (CC BY-SA 4.0).
-
-### The name and the logo
-
-The licences above cover the code and the content, not the name **Learn Arduino**, the learnarduino.tech domain, or the logo.
-If you run your own copy, please give it a different name and logo, so nobody confuses it with this site.
-
-**Learn Arduino is an independent project. It is not affiliated with, endorsed by or sponsored by Arduino S.r.l.**
-"Arduino" and "UNO" are trademarks of Arduino S.r.l., used here only to say which board the lab simulates.
-
-## Contributing
-
-Issues and pull requests are welcome: bug reports, new parts, new projects and tutorial fixes.
-Please run `npm test` before opening a pull request. By contributing, you agree that your work is shared under the licence
-of the part you change (see the table above).
+## 📜 ลิขสิทธิ์และการพัฒนา
+- ต้นฉบับพัฒนาโดย: [Dilum Sanjaya](https://x.com/DilumSanjaya) / [Learn Arduino](https://learn-arduino-red.vercel.app/)
+- ปรับแต่งและแปลภาษาไทยเพื่อการศึกษาโดย: Antigravity Assistant สำหรับคุณครูและนักเรียนไทย

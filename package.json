@@ -24,7 +24,9 @@
     "deploy:site": "npm run build && npx wrangler deploy",
     "check:live": "node tools/prod-check.mjs",
     "learn:build": "node tools/learn/build.mjs",
-    "learn:shots": "node tools/learn/shoot.mjs"
+    "learn:shots": "node tools/learn/shoot.mjs",
+    "start": "node server.mjs",
+    "serve:th": "node server.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.3",
